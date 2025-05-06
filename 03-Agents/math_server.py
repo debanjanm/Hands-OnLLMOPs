@@ -1,4 +1,4 @@
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 mcp = FastMCP("Math")
 
@@ -13,4 +13,7 @@ def multiply(a: int, b: int) -> int:
     return a * b
 
 if __name__ == "__main__":
-    mcp.run(transport="sse")
+    # mcp.run(transport="sse")
+
+    import asyncio
+    asyncio.run(mcp.run_sse_async(host="localhost", port=9000, log_level="debug"))
